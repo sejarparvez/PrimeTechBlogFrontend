@@ -11,7 +11,8 @@ function Navbar({ title, paragraph }: UserProps) {
     if (helloEndpoint) {
       const response = await fetch(helloEndpoint);
       const data = await response.json();
-      console.log(data)
+      console.log(data);
+      console.log("clicked");
       setMessage(data);
     }
   }
