@@ -5,16 +5,14 @@ type UserProps = { title: string; paragraph: string };
 function Navbar({ title, paragraph }: UserProps) {
   const [message, setMessage] = useState<string>("");
 
-  const helloEndpoint = process.env.REACT_APP_API;
+  const Endpoint = `${process.env.REACT_APP_API}/hello`;
 
   async function submit() {
-    if (helloEndpoint) {
-      const response = await fetch(helloEndpoint);
-      const data = await response.json();
-      console.log(data);
-      console.log("clicked");
-      setMessage(data);
-    }
+    const response = await fetch(Endpoint);
+    const data = await response.json();
+    console.log(data);
+    console.log("clicked");
+    setMessage(data);
   }
 
   return (
