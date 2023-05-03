@@ -10,7 +10,6 @@ function Navbar({ title, paragraph }: UserProps) {
   async function submit() {
     const response = await fetch(Endpoint);
     const data = await response.json();
-    console.log(data);
     console.log("clicked");
     setMessage(data);
   }
