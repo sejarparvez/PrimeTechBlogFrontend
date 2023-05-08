@@ -15,7 +15,7 @@ interface Post {
 const HotPost = () => {
   const [hotPosts, setHotPosts] = useState<Post[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [error, setError] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   useEffect(() => {
     const fetchHotPosts = async () => {
@@ -24,13 +24,16 @@ const HotPost = () => {
           `${process.env.REACT_APP_API}/posts/hotpost`
         );
         const data = await response.json();
-        setHotPosts(data);
-        setIsLoading(false);
+        if (data.message === "No Post To Display") {
+          setErrorMessage("No hot posts to display");
+        } else {
+          setHotPosts(data);
+        }
       } catch (error) {
         console.log(error);
-        setError(true);
-        setIsLoading(false);
+        setErrorMessage("Error fetching hot posts");
       }
+      setIsLoading(false);
     };
     fetchHotPosts();
   }, []);
@@ -65,28 +68,32 @@ const HotPost = () => {
     }
   };
 
+  if (isLoading) {
+    return (
+      <div>
+        <Loading />
+      </div>
+    );
+  }
+
+  if (errorMessage) {
+    return (
+      <div className="flex justify-center items-center">{errorMessage}</div>
+    );
+  }
+
   return (
     <div className="flex flex-col flex-wrap items-center justify-center gap-8 md:flex-row">
-      {isLoading ? (
-        <div>
-          <Loading />
-        </div>
-      ) : error ? (
-        <div>No posts found.</div>
-      ) : hotPosts.length === 0 ? (
-        <div>No posts found.</div>
-      ) : (
-        hotPosts.map((post) => (
-          <HotPostModel
-            key={post._id}
-            cover={post.cover}
-            author={post.author.Name}
-            time={formatDate(post.updatedAt)}
-            heading={post.title}
-            id={post._id}
-          />
-        ))
-      )}
+      {hotPosts.map((post) => (
+        <HotPostModel
+          key={post._id}
+          cover={post.cover}
+          author={post.author.Name}
+          time={formatDate(post.updatedAt)}
+          heading={post.title}
+          id={post._id}
+        />
+      ))}
     </div>
   );
 };
