@@ -1,3 +1,68 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  @apply bg-slate-200 text-black dark:bg-gray-900 dark:text-white;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-transparent shadow-md;
+}
+::-webkit-scrollbar {
+  @apply w-2 bg-white dark:bg-black;
+}
+::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-black dark:bg-white;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: white black;
+}
+
+.hamburger {
+  @apply relative h-6 w-6 cursor-pointer transition-all;
+}
+
+.hamburger-top,
+.hamburger-middle,
+.hamburger-bottom {
+  @apply absolute top-0 left-0 h-0.5 w-6 rotate-0 bg-black duration-500 ease-in-out dark:bg-white;
+}
+
+.hamburger-middle {
+  transform: translateY(7px);
+}
+.hamburger-bottom {
+  transform: translateY(14px);
+}
+
+.open {
+  transform: rotate(90deg);
+  transform: translateY(0px);
+}
+
+.open .hamburger-top {
+  transform: rotate(45deg) translateY(6px) translate(6px);
+}
+
+.open .hamburger-middle {
+  display: none;
+}
+.open .hamburger-bottom {
+  transform: rotate(-45deg) translateY(6px) translate(-6px);
+}
+
+.showMenuNav {
+  @apply absolute left-6 right-6 mt-6 flex flex-col items-center space-y-6 self-end border border-green-500 bg-white py-8 font-bold text-black drop-shadow-md sm:w-auto sm:self-center;
+}
+
+.btn {
+  @apply h-10 w-32 rounded-lg bg-black font-bold text-white ring-2 ring-green-500 focus:ring-4;
+}
+
+li {
+  @apply list-none;
+}
