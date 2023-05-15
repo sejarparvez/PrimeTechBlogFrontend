@@ -60,6 +60,8 @@ function CommentForm({ postId }: { postId: string }) {
   const name = userInfo?.name;
   const id = userInfo?.id;
 
+  console.log(comments)
+
   return (
     <div className="flex flex-col gap-4 overflow-hidden ">
       <div className="flex flex-col gap-4 rounded-lg bg-white p-4 dark:bg-black">

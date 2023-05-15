@@ -38,7 +38,7 @@ function NewPost() {
     if (files) {
       data.set("file", files[0]);
     }
-    data.set("categories", JSON.stringify(categories));
+    data.set("categories", categories);
 
     toast.loading("Please wait while we save your post to the database.");
     try {

@@ -105,6 +105,7 @@ function EditPost() {
             onChange={(ev) => setCategories(ev.target.value)}
             error={errors.categories}
           />
+
           <FormInput
             label="Featured Image"
             htmlFor="image"

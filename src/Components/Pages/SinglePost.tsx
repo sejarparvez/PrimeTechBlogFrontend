@@ -33,9 +33,19 @@ function SinglePost(): JSX.Element {
     _id: string;
     title: string;
     author: {
-      bio: string;
+      Bio: string;
       _id: number;
       Name: string;
+      Image: string;
+      socialLinks: {
+        facebook: string;
+        twitter: string;
+        linkedin: string;
+        instagram: string;
+        telegram: string;
+        github: string;
+        website: string;
+      };
     };
     content: string;
     categories: string;
@@ -87,6 +97,7 @@ function SinglePost(): JSX.Element {
   };
 
   const postId = postInfo._id;
+
   return (
     <div className="flex flex-col md:grid md:grid-cols-8 md:gap-4">
       <div className="rounded-2xl py-1  md:col-span-6 md:row-span-2">
@@ -158,15 +169,22 @@ function SinglePost(): JSX.Element {
         />
         <CommentForm postId={postId} />
       </div>
-      <div className="col-span-2 mb-4 w-full md:sticky md:top-4 md:h-screen">
-        <div className="mb-10 h-4/6 rounded-2xl bg-white dark:bg-black">
-          <AuthorCard
-            author={{ name: postInfo.author.Name, bio: postInfo.author.bio }}
-            id={postInfo.author._id}
-          />
-        </div>
-        <div className="h-1/5 rounded-xl bg-white p-2 dark:bg-black">
-          <Ad />
+      <div className="col-span-2 w-full md:sticky md:top-4 md:h-screen">
+        <div className="flex flex-col justify-between h-[97%]">
+          <div className=" h-[76%] rounded-2xl bg-white dark:bg-black">
+            <AuthorCard
+              author={{
+                name: postInfo.author.Name,
+                bio: postInfo.author.Bio,
+                image: postInfo.author.Image,
+                socialLinks: postInfo.author.socialLinks 
+              }}
+              id={postInfo.author._id}
+            />
+          </div>
+          <div className="h-1/5 rounded-xl bg-white p-2 dark:bg-black">
+            <Ad />
+          </div>
         </div>
       </div>
     </div>

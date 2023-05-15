@@ -99,7 +99,7 @@ function Profile() {
           </div>
           <div className="flex flex-col gap-6 px-4 md:px-0">
             <div className="text-4xl font-bold text-white">{user.Name}</div>
-            <div className="text-xl">{user.Email}</div>
+            <div className="text-xl text-black">{user.Email}</div>
           </div>
           {user.Email === userInfo.userInfo.email && (
             <div className="flex items-center gap-2 md:flex-col md:gap-6">
@@ -127,61 +127,51 @@ function Profile() {
           <div className="md:text-xl">{user.Bio}</div>
           <div className="flex flex-col items-center justify-center gap-6">
             <div className="text-3xl font-bold">Let's Connect</div>
-            <div className="flex gap-4">
-              <Link
-                to={facebook || ""}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {facebook && <Facebook />}
-              </Link>
-              <Link
-                to={twitter || ""}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {twitter && <Twitter />}
-              </Link>
-              <Link
-                to={instagram || ""}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {instagram && <Instagram />}
-              </Link>
-              <Link
-                to={telegram || ""}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {telegram && <Telegram />}
-              </Link>
-              <Link
-                to={linkedin || ""}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {linkedin && <Linkedin />}
-              </Link>
-              <Link to={github || ""} target="_blank" rel="noopener noreferrer">
-                {github && <Github />}
-              </Link>
-              <Link
-                to={website || ""}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {website && <Website />}
-              </Link>
+            <div className="flex gap-4 justify-center items-center mx-auto">
+              {facebook && (
+                <a href={facebook} target="_blank" rel="noopener noreferrer">
+                  <Facebook />
+                </a>
+              )}
+              {twitter && (
+                <a href={twitter} target="_blank" rel="noopener noreferrer">
+                  <Twitter />
+                </a>
+              )}
+              {instagram && (
+                <a href={instagram} target="_blank" rel="noopener noreferrer">
+                  <Instagram />
+                </a>
+              )}
+              {linkedin && (
+                <a href={linkedin} target="_blank" rel="noopener noreferrer">
+                  <Linkedin />
+                </a>
+              )}
+              {github && (
+                <a href={github} target="_blank" rel="noopener noreferrer">
+                  <Github />
+                </a>
+              )}
+              {telegram && (
+                <a href={telegram} target="_blank" rel="noopener noreferrer">
+                  <Telegram />
+                </a>
+              )}
+              {website && (
+                <a href={website} target="_blank" rel="noopener noreferrer">
+                  <Website />
+                </a>
+              )}
             </div>
           </div>
         </div>
         <div>
           <div className=" flex md:mt-10">
-            <span className="mx-auto px-3 text-2xl font-bold md:px-6 md:text-4xl">
+            <span className="mx-auto px-3 text-center text-2xl font-bold md:px-6 md:text-4xl ">
               <span> Every Article Published By </span>
-              {user.Name}
-              <span className="text-3xl font-extrabold md:text-5xl">
+
+              <span className="text-3xl font-extrabold md:text-5xl text-pink">
                 {user.Name}
               </span>
             </span>

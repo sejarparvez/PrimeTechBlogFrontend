@@ -10,6 +10,7 @@ interface CommentsListProps {
   comments: any;
 }
 
+
 function CommentsList({ comments }: CommentsListProps) {
   return (
     <div className="flex flex-col gap-4">

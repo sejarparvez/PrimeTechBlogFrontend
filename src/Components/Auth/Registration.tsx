@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { toast, Toaster } from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import RegistrationValidation from "../AdditionalComponents/Validation/RegistrationValidation";
 import Button from "../Common/Button/Button";
 import FormInput from "../Common/Input/FormInput";
@@ -10,6 +10,7 @@ export default function Registration() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [redirect, setRedirect] = useState(false);
   const [errors, setErrors] = useState<{
     name?: string;
     email?: string;
@@ -45,6 +46,7 @@ export default function Registration() {
           .then((data) => {
             if (data.UserData.Email) {
               resolve("Registration successful");
+              setRedirect(true);
             } else {
               reject(new Error("Registration failed. Email may already exist"));
             }
@@ -61,6 +63,10 @@ export default function Registration() {
       }
     );
   };
+
+  if (redirect) {
+    return <Navigate to={"/"} />;
+  }
 
   return (
     <div>

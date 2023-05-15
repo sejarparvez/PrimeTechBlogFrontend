@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { toast, Toaster } from "react-hot-toast";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import EditProfileValidation from "../AdditionalComponents/Validation/EditProfileValidation";
 import FormInput from "../Common/Input/FormInput";
 import TextArea from "../Common/Input/Textarea";
@@ -19,6 +19,7 @@ export default function EditProfile() {
   const [linkedinLink, setLinkedinLink] = useState<string>("");
   const [websiteLink, setWebsiteLink] = useState<string>("");
   const [selectedOption, setSelectedOption] = useState<string>("");
+  const [redirect, setRedirect] = useState(false);
   const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
@@ -73,7 +74,9 @@ export default function EditProfile() {
         website: websiteLink,
       })
     );
-    formData.append("Image", files![0]);
+    if (files) {
+      formData.append("Image", files![0]);
+    }
     const updateProfile = () => {
       toast.loading("Please wait while we update your profile");
       return new Promise((resolve, reject) => {
@@ -87,6 +90,7 @@ export default function EditProfile() {
             .then((data) => {
               toast.dismiss();
               toast.success("Profile Successfully updated");
+              setRedirect(true);
               setName(data.Name);
               setBio(data.Bio);
               setFacebookLink(data.socialLinks.facebook);
@@ -113,6 +117,10 @@ export default function EditProfile() {
       .catch((error) => {});
   };
 
+  if (redirect) {
+    return <Navigate to={`/users/${id}`} />;
+  }
+
   return (
     <div className="mx-auto max-w-md rounded-lg bg-white p-5 shadow-md dark:bg-black">
       <h1 className="mb-5 text-2xl font-bold">Edit Profile</h1>
@@ -135,7 +143,7 @@ export default function EditProfile() {
           id="bio"
           type="text"
           placeholder="Describe who you are"
-          maxLength={800}
+          maxLength={5000}
           value={bio}
           onChange={(ev) => setBio(ev.target.value)}
         />

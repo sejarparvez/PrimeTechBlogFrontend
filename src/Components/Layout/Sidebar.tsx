@@ -35,12 +35,12 @@ function Sidebar() {
   const UserName = userInfo?.name;
 
   return (
-    <div className="flex h-full flex-col items-center justify-between rounded-2xl bg-white py-6 px-4 transition-all duration-700 dark:bg-black">
+    <div className="flex h-full flex-col items-center justify-between rounded-2xl bg-white py-3 px-4 transition-all duration-700 dark:bg-black">
       <div className="flex flex-col">
         <Link to={"/"}>
-          <div className="py-4 text-4xl font-bold">Logo</div>
+          <div className="text-4xl font-bold">Logo</div>
         </Link>
-        <div className="flex items-center justify-center pb-4">
+        <div className="flex items-center justify-center py-4">
           <Toggle />
         </div>
       </div>
@@ -72,7 +72,7 @@ function Sidebar() {
             <span>AI</span>
           </Link>
           <Link to={"/posts/bussiness"}>
-            <span>Bussiness</span>
+            <span>Business</span>
           </Link>
           <Link to={"/posts/phone"}>
             <span>Smart Phone</span>
@@ -132,13 +132,13 @@ function Sidebar() {
       <div className="mt-4">
         {UserName ? (
           <Link to={`/users/${id}`}>
-            <button className="rounded-full border-2 border-lime bg-black px-10 py-1.5 text-xl font-bold text-white">
+            <button className="rounded-full border-2 border-pink bg-black px-10 py-1.5 text-xl font-bold text-white">
               Profile
             </button>
           </Link>
         ) : (
           <Link to={"/login"}>
-            <button className="rounded-full border-2 border-lime bg-black px-10 py-1.5 text-xl font-bold text-white">
+            <button className="rounded-full border-2 border-pink bg-black px-10 py-1.5 text-xl font-bold text-white">
               Log In
             </button>
           </Link>

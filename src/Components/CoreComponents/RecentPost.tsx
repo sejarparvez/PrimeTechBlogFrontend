@@ -42,7 +42,7 @@ function RecentPost() {
         onClick={() => handlePageChange(number)}
         className={`${
           currentPage === number
-            ? "border-2 border-lime bg-black text-white"
+            ? "border-2 border-pink bg-black text-white"
             : "bg-white text-gray-800"
         } mx-1 cursor-pointer rounded-md border px-3 py-1 hover:bg-gray-800`}
       >

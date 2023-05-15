@@ -29,7 +29,7 @@ function RecentPostModel({
   return (
     <div className="flex flex-col md:w-[78%] md:gap-20">
       <Link to={`/post/${_id}`}>
-        <div className="hidden rounded-3xl border-r-4 border-lime bg-white p-4 dark:bg-black md:block">
+        <div className="hidden rounded-3xl border-r-4 border-pink bg-white p-4 dark:bg-black md:block">
           <div className="grid grid-cols-12 gap-6 bg-white dark:bg-black md:flex-row">
             <div className="col-span-5 h-56 bg-black">
               <img src={cover} alt="" className="h-full w-full object-cover" />
