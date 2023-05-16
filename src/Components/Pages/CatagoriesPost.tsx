@@ -47,7 +47,7 @@ function CategoriesPost(props: CategoriesPostProps) {
   };
 
   return (
-    <div className="mt-28 flex w-full flex-col items-center gap-16 md:mt-6">
+    <div className="flex w-full flex-col text-center items-center gap-16 md:mt-6">
       <div className="text-3xl font-bold md:text-5xl">
         Every Post Of {categories} Categories
       </div>

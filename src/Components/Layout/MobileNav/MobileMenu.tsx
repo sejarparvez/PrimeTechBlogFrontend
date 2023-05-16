@@ -4,34 +4,45 @@ import { UserContext } from "../../../UserContext";
 
 export default function MobileMenu() {
   const { userInfo } = useContext(UserContext);
-  const [isNavOpen, setIsNavOpen] = useState(false);
+  const [NavOpen, setNavOpen] = useState(false);
 
   const id = userInfo?.id;
   const UserName = userInfo?.name;
 
   const HandleClick = () => {
-    setIsNavOpen((prev) => !prev);
+    setNavOpen((prev) => !prev);
   };
 
   return (
-    <div>
+    <div className="lg:hidden">
       <div
-        id="menu-btn"
-        className={
-          isNavOpen ? "open hamburger md:hidden" : "hamburger md:hidden"
-        }
+        className={`z-40 flex flex-col gap-1 p-3 duration-300 ${
+          NavOpen ? "rotate-[360deg]" : ""
+        }`}
         onClick={HandleClick}
       >
-        <span className="hamburger-top"></span>
-        <span className="hamburger-middle"></span>
-        <span className="hamburger-bottom"></span>
+        <span
+          className={`h-0.5 w-6 bg-pink duration-300 ${
+            NavOpen ? " translate-y-1.5 rotate-45 " : ""
+          } `}
+        ></span>
+        <span
+          className={`h-0.5 w-6 bg-pink duration-300  ${
+            NavOpen ? "hidden" : ""
+          } `}
+        ></span>
+        <span
+          className={`h-0.5 w-6 bg-pink duration-300 ${
+            NavOpen ? "-rotate-45 duration-300 ease-in-out" : ""
+          } `}
+        ></span>
       </div>
       <div
-        className={`fixed top-[4.5rem] right-0 z-50 h-screen w-full transform bg-white transition duration-300 ease-out dark:bg-black ${
-          isNavOpen ? "translate-x-0" : "translate-x-full"
+        className={`fixed top-0 right-0 -z-10 h-screen w-full transform  bg-slate-200 transition duration-300 ease-out dark:bg-black ${
+          NavOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="mt-6 flex flex-col items-center gap-4 text-xl">
+        <div className="mt-24 flex flex-col items-center gap-4 text-xl [&>*]:cursor-pointer hover:[&>*]:text-pink">
           <Link to={"/posts/technology"}>
             <span onClick={HandleClick}>Technology</span>
           </Link>
