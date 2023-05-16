@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Toggle from "../Toggle";
 import MobileMenu from "./MobileMenu";
 
@@ -8,7 +9,9 @@ export default function Navbar() {
       id="home"
     >
       <div className="mx-auto flex px-4 h-16  items-center justify-between md:px-8">
-        <div className="font-bold text-xl">Logo</div>
+        <Link to={"/"} className="font-bold text-xl">
+          Logo
+        </Link>
         <div className=" scale-75">
           <Toggle />
         </div>
