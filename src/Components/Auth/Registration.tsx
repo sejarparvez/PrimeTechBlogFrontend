@@ -65,7 +65,7 @@ export default function Registration() {
   };
 
   if (redirect) {
-    return <Navigate to={"/"} />;
+    return <Navigate to={"/login"} />;
   }
 
   return (
